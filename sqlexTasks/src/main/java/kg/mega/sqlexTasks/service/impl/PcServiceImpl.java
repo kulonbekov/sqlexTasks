@@ -5,6 +5,8 @@ import kg.mega.sqlexTasks.mappers.PcMapper;
 import kg.mega.sqlexTasks.models.Pc;
 import kg.mega.sqlexTasks.models.dtos.TaskDto7;
 import kg.mega.sqlexTasks.models.dtos.TaskPcDto1;
+import kg.mega.sqlexTasks.models.dtos.TaskPcDto9;
+import kg.mega.sqlexTasks.models.dtos.TaskProductDto2;
 import kg.mega.sqlexTasks.service.PcService;
 import org.springframework.stereotype.Service;
 
@@ -37,4 +39,11 @@ public class PcServiceImpl implements PcService {
         List<Pc> pcs = pcRep.findByAll(maker);
         return PcMapper.INSTANCE.pcToTaskDto7(pcs);
     }
+
+    @Override
+    public List<TaskPcDto9> task9(int speed) {
+        List<Pc> pcs = pcRep.findDistinctBySpeedGreaterThan(speed);
+        return PcMapper.INSTANCE.pcToTaskPcDto9(pcs);
+    }
+
 }

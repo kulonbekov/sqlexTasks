@@ -36,6 +36,8 @@ public class TaskServiceImpl implements TaskService {
                 return productService.task7("B");
             case 8:
                 return productService.task8("PC","Laptop");
+            case 9:
+                return pcService.task9(450);
         }
         return null;
     }
