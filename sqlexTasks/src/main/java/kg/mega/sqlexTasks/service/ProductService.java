@@ -9,4 +9,5 @@ public interface ProductService {
 
     List<TaskProductDto2> task2 (String type);
     List<TaskDto7> task7(String maker);
+    List<String> task8(String type1, String type2);
 }

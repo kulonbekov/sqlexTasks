@@ -48,4 +48,24 @@ public class ProductServiceImpl implements ProductService {
         taskDto7s.addAll(printerService.task7(maker));
         return taskDto7s.stream().distinct().collect(Collectors.toList());
     }
+
+    @Override
+    public List<String> task8(String type1, String type2) { // service for the 8 task (sql-ex)
+        List<Product> productsPC = productRep.findByType(type1);
+        List<Product> productsLaptop = productRep.findByType(type2);
+
+        productsPC = productsPC.stream()
+                .filter(x->{
+                    for (Product product: productsLaptop) {
+                        if (product.getMaker().equals(x.getMaker()))
+                            return false;
+                    }
+                    return true;
+                })
+                .collect(Collectors.toList());
+
+        return productsPC.stream().map(x->x.getMaker()).distinct().collect(Collectors.toList());
+    }
+
+
 }
