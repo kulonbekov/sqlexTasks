@@ -20,7 +20,7 @@ public class PcServiceImpl implements PcService {
     }
 
     @Override
-    public List<TaskPcDto1> task1(double price) { // service for the first task (sql-ex)
+    public List<TaskPcDto1> task1(double price) { // service for the 1 task (sql-ex)
         List<Pc> pcs = pcRep.findByPriceLessThan(price);
         return PcMapper.INSTANCE.pcToTaskPcDtos1(pcs);
     }
