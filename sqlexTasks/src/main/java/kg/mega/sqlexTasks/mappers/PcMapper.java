@@ -2,6 +2,7 @@ package kg.mega.sqlexTasks.mappers;
 
 import kg.mega.sqlexTasks.models.Pc;
 import kg.mega.sqlexTasks.models.Product;
+import kg.mega.sqlexTasks.models.dtos.TaskDto7;
 import kg.mega.sqlexTasks.models.dtos.TaskPcDto1;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -18,5 +19,10 @@ public interface PcMapper {
     TaskPcDto1 pcToTaskPcDto1(Pc pc);
 
     List<TaskPcDto1> pcToTaskPcDtos1 (List<Pc> pc);
+
+    @Mapping(source = "product.model", target = "model")
+    TaskDto7 pcToTaskDto7(Pc pc);
+    List<TaskDto7> pcToTaskDto7(List<Pc> pc);
+
 
 }

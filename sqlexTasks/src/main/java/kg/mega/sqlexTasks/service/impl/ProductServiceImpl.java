@@ -3,10 +3,15 @@ package kg.mega.sqlexTasks.service.impl;
 import kg.mega.sqlexTasks.dao.ProductRep;
 import kg.mega.sqlexTasks.mappers.ProductMapper;
 import kg.mega.sqlexTasks.models.Product;
+import kg.mega.sqlexTasks.models.dtos.TaskDto7;
 import kg.mega.sqlexTasks.models.dtos.TaskProductDto2;
+import kg.mega.sqlexTasks.service.LaptopService;
+import kg.mega.sqlexTasks.service.PcService;
+import kg.mega.sqlexTasks.service.PrinterService;
 import kg.mega.sqlexTasks.service.ProductService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,9 +19,15 @@ import java.util.stream.Collectors;
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRep productRep;
+    private final PrinterService printerService;
+    private final PcService pcService;
+    private final LaptopService laptopService;
 
-    public ProductServiceImpl(ProductRep productRep) {
+    public ProductServiceImpl(ProductRep productRep, PrinterService printerService, PcService pcService, LaptopService laptopService) {
         this.productRep = productRep;
+        this.printerService = printerService;
+        this.pcService = pcService;
+        this.laptopService = laptopService;
     }
 
     @Override
@@ -27,5 +38,14 @@ public class ProductServiceImpl implements ProductService {
                 .distinct()
                 .collect(Collectors.toList());
         return newList;
+    }
+
+    @Override
+    public List<TaskDto7> task7(String maker) { // service for the 7 task (sql-ex)
+        List<TaskDto7> taskDto7s = new ArrayList<>();
+        taskDto7s.addAll(pcService.task7(maker));
+        taskDto7s.addAll(laptopService.task7(maker));
+        taskDto7s.addAll(printerService.task7(maker));
+        return taskDto7s.stream().distinct().collect(Collectors.toList());
     }
 }

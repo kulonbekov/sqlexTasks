@@ -1,7 +1,9 @@
 package kg.mega.sqlexTasks.dao;
 
+import kg.mega.sqlexTasks.models.Pc;
 import kg.mega.sqlexTasks.models.Printer;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -10,4 +12,7 @@ import java.util.List;
 public interface PrinterRep extends JpaRepository<Printer, Integer> {
 
     List<Printer> findByColorEquals(char color);
+
+    @Query(value = "select distinct * from printers pr join products p on pr.model = p.model where p.maker = :maker", nativeQuery = true)
+    List<Printer> findByAll(String maker);
 }

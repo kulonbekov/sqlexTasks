@@ -1,6 +1,7 @@
 package kg.mega.sqlexTasks.mappers;
 
 import kg.mega.sqlexTasks.models.Laptop;
+import kg.mega.sqlexTasks.models.dtos.TaskDto7;
 import kg.mega.sqlexTasks.models.dtos.TaskLaptopDto3;
 import kg.mega.sqlexTasks.models.dtos.TaskLaptopDto6;
 import org.mapstruct.Mapper;
@@ -23,6 +24,13 @@ public interface LaptopMapper {
     TaskLaptopDto6 laptopToTaskLaptopDto6 (Laptop laptop);
 
     List<TaskLaptopDto6> laptopToTaskLaptopDtos6 (List<Laptop> laptop);
+
+    @Mapping(source = "product.model", target = "model")
+    TaskDto7 laptopToTaskDto7(Laptop laptop);
+
+    List<TaskDto7> laptopToTaskDtos7(List<Laptop> laptop);
+
+
 
 
 

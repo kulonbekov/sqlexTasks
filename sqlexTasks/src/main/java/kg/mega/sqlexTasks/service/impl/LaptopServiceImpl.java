@@ -3,6 +3,7 @@ package kg.mega.sqlexTasks.service.impl;
 import kg.mega.sqlexTasks.dao.LaptopRep;
 import kg.mega.sqlexTasks.mappers.LaptopMapper;
 import kg.mega.sqlexTasks.models.Laptop;
+import kg.mega.sqlexTasks.models.dtos.TaskDto7;
 import kg.mega.sqlexTasks.models.dtos.TaskLaptopDto3;
 import kg.mega.sqlexTasks.models.dtos.TaskLaptopDto6;
 import kg.mega.sqlexTasks.service.LaptopService;
@@ -30,4 +31,12 @@ public class LaptopServiceImpl implements LaptopService {
         List<Laptop> laptops = laptopRep.findAllByHdGreaterThanEqual(hd);
         return LaptopMapper.INSTANCE.laptopToTaskLaptopDtos6(laptops);
     }
+
+    @Override
+    public List<TaskDto7> task7(String maker) {
+        List<Laptop> laptops = laptopRep.findByAll(maker);
+        return LaptopMapper.INSTANCE.laptopToTaskDtos7(laptops);
+    }
+
+
 }

@@ -3,6 +3,7 @@ package kg.mega.sqlexTasks.service.impl;
 import kg.mega.sqlexTasks.dao.PcRep;
 import kg.mega.sqlexTasks.mappers.PcMapper;
 import kg.mega.sqlexTasks.models.Pc;
+import kg.mega.sqlexTasks.models.dtos.TaskDto7;
 import kg.mega.sqlexTasks.models.dtos.TaskPcDto1;
 import kg.mega.sqlexTasks.service.PcService;
 import org.springframework.stereotype.Service;
@@ -29,5 +30,11 @@ public class PcServiceImpl implements PcService {
     public List<TaskPcDto1> task5(double price, String cd1, String cd2) { // service for the 5 task (sql-ex)
         List<Pc> pcs = pcRep.findAllBy(price,cd1,cd2);
         return PcMapper.INSTANCE.pcToTaskPcDtos1(pcs);
+    }
+
+    @Override
+    public List<TaskDto7> task7(String maker) {
+        List<Pc> pcs = pcRep.findByAll(maker);
+        return PcMapper.INSTANCE.pcToTaskDto7(pcs);
     }
 }
