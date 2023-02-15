@@ -4,6 +4,7 @@ import kg.mega.sqlexTasks.dao.LaptopRep;
 import kg.mega.sqlexTasks.mappers.LaptopMapper;
 import kg.mega.sqlexTasks.models.Laptop;
 import kg.mega.sqlexTasks.models.dtos.TaskLaptopDto3;
+import kg.mega.sqlexTasks.models.dtos.TaskLaptopDto6;
 import kg.mega.sqlexTasks.service.LaptopService;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +23,11 @@ public class LaptopServiceImpl implements LaptopService {
     public List<TaskLaptopDto3> task3(double price) {
         List<Laptop> laptops = laptopRep.findByPriceGreaterThan(price);
         return LaptopMapper.INSTANCE.laptopToTaskLaptopDtos3(laptops);
+    }
+
+    @Override
+    public List<TaskLaptopDto6> task6(double hd) {
+        List<Laptop> laptops = laptopRep.findAllByHdGreaterThanEqual(hd);
+        return LaptopMapper.INSTANCE.laptopToTaskLaptopDtos6(laptops);
     }
 }

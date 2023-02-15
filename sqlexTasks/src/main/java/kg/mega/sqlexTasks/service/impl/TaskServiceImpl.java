@@ -28,6 +28,10 @@ public class TaskServiceImpl implements TaskService {
                 return laptopService.task3(1000);
             case 4:
                 return printerService.task4('y');
+            case 5:
+                return pcService.task5(600, "12x","24x");
+            case 6:
+                return laptopService.task6(10);
         }
         return null;
     }

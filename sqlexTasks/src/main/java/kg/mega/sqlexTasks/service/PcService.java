@@ -8,4 +8,6 @@ public interface PcService {
 
     List<TaskPcDto1> task1 (double price);
 
+    List<TaskPcDto1> task5(double price, String cd1, String cd2);
+
 }

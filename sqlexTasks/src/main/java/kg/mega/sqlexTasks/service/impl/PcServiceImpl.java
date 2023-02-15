@@ -24,4 +24,10 @@ public class PcServiceImpl implements PcService {
         List<Pc> pcs = pcRep.findByPriceLessThan(price);
         return PcMapper.INSTANCE.pcToTaskPcDtos1(pcs);
     }
+
+    @Override
+    public List<TaskPcDto1> task5(double price, String cd1, String cd2) { // service for the 5 task (sql-ex)
+        List<Pc> pcs = pcRep.findAllBy(price,cd1,cd2);
+        return PcMapper.INSTANCE.pcToTaskPcDtos1(pcs);
+    }
 }
