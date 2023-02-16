@@ -22,7 +22,7 @@ public interface PrinterMapper {
     List<TaskDto7> printerToTaskDto7 (List<Printer> printer);
     @Mapping(source = "product.model", target = "model")
     TaskPrinterDto10 printerToTaskPrinterDto10(Printer printer);
-    List<TaskPrinterDto10> printerToTaskPrinterDto10(List<Printer> printer);
+    List<TaskPrinterDto10> printerToTaskPrinterDtos10(List<Printer> printer);
 
 
 }

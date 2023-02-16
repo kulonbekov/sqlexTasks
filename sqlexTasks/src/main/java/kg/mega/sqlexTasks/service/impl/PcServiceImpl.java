@@ -3,10 +3,7 @@ package kg.mega.sqlexTasks.service.impl;
 import kg.mega.sqlexTasks.dao.PcRep;
 import kg.mega.sqlexTasks.mappers.PcMapper;
 import kg.mega.sqlexTasks.models.Pc;
-import kg.mega.sqlexTasks.models.dtos.TaskDto7;
-import kg.mega.sqlexTasks.models.dtos.TaskPcDto1;
-import kg.mega.sqlexTasks.models.dtos.TaskPcDto9;
-import kg.mega.sqlexTasks.models.dtos.TaskProductDto2;
+import kg.mega.sqlexTasks.models.dtos.*;
 import kg.mega.sqlexTasks.service.PcService;
 import org.springframework.stereotype.Service;
 
@@ -44,6 +41,12 @@ public class PcServiceImpl implements PcService {
     public List<TaskPcDto9> task9(int speed) {
         List<Pc> pcs = pcRep.findDistinctBySpeedGreaterThan(speed);
         return PcMapper.INSTANCE.pcToTaskPcDto9(pcs);
+    }
+
+    @Override
+    public Integer task11() {
+        Integer avg = pcRep.findByAvgSpeed();
+        return avg;
     }
 
 }

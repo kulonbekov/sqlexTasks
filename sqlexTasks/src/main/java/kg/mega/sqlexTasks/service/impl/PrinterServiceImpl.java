@@ -39,6 +39,6 @@ public class PrinterServiceImpl implements PrinterService {
     @Override
     public List<TaskPrinterDto10> task10() {
         List<Printer> printers = printerRep.findByMaxPrice();
-        return PrinterMapper.INSTANCE.printerToTaskPrinterDto10(printers);
+        return PrinterMapper.INSTANCE.printerToTaskPrinterDtos10(printers);
     }
 }
