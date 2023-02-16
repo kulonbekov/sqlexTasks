@@ -8,6 +8,7 @@ import kg.mega.sqlexTasks.models.Product;
 import kg.mega.sqlexTasks.models.dtos.TaskDto7;
 import kg.mega.sqlexTasks.models.dtos.TaskLaptopDto17;
 import kg.mega.sqlexTasks.models.dtos.TaskProductDto2;
+import kg.mega.sqlexTasks.models.dtos.TaskProductDto20;
 import kg.mega.sqlexTasks.service.LaptopService;
 import kg.mega.sqlexTasks.service.PcService;
 import kg.mega.sqlexTasks.service.PrinterService;
@@ -78,6 +79,11 @@ public class ProductServiceImpl implements ProductService {
     public List<TaskLaptopDto17> task17() {
         int minSpeed = pcRep.findBy17();
         return laptopRep.findAllBy17(minSpeed);
+    }
+
+    @Override
+    public List<TaskProductDto20> task20(String type) {
+        return productRep.findByAll20(type);
     }
 
 
