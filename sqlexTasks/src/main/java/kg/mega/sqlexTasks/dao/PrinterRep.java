@@ -15,4 +15,10 @@ public interface PrinterRep extends JpaRepository<Printer, Integer> {
 
     @Query(value = "select distinct * from printers pr join products p on pr.model = p.model where p.maker = :maker", nativeQuery = true)
     List<Printer> findByAll(String maker);
+
+    @Query(value = "select *\n" +
+            "From printers p\n" +
+            "Where price = (Select Max(price)\n" +
+            "               From printers)", nativeQuery = true)
+    List<Printer> findByMaxPrice();
 }

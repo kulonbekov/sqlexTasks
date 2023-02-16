@@ -2,6 +2,7 @@ package kg.mega.sqlexTasks.mappers;
 
 import kg.mega.sqlexTasks.models.Printer;
 import kg.mega.sqlexTasks.models.dtos.TaskDto7;
+import kg.mega.sqlexTasks.models.dtos.TaskPrinterDto10;
 import kg.mega.sqlexTasks.models.dtos.TaskPrinterDto4;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -19,4 +20,9 @@ public interface PrinterMapper {
     @Mapping(source = "product.model", target = "model")
     TaskDto7 printerToTaskDto7 (Printer printer);
     List<TaskDto7> printerToTaskDto7 (List<Printer> printer);
+    @Mapping(source = "product.model", target = "model")
+    TaskPrinterDto10 printerToTaskPrinterDto10(Printer printer);
+    List<TaskPrinterDto10> printerToTaskPrinterDto10(List<Printer> printer);
+
+
 }
