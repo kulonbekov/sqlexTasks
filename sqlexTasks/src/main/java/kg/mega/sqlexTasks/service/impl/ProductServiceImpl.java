@@ -1,9 +1,12 @@
 package kg.mega.sqlexTasks.service.impl;
 
+import kg.mega.sqlexTasks.dao.LaptopRep;
+import kg.mega.sqlexTasks.dao.PcRep;
 import kg.mega.sqlexTasks.dao.ProductRep;
 import kg.mega.sqlexTasks.mappers.ProductMapper;
 import kg.mega.sqlexTasks.models.Product;
 import kg.mega.sqlexTasks.models.dtos.TaskDto7;
+import kg.mega.sqlexTasks.models.dtos.TaskLaptopDto17;
 import kg.mega.sqlexTasks.models.dtos.TaskProductDto2;
 import kg.mega.sqlexTasks.service.LaptopService;
 import kg.mega.sqlexTasks.service.PcService;
@@ -22,12 +25,16 @@ public class ProductServiceImpl implements ProductService {
     private final PrinterService printerService;
     private final PcService pcService;
     private final LaptopService laptopService;
+    private final PcRep pcRep;
+    private final LaptopRep laptopRep;
 
-    public ProductServiceImpl(ProductRep productRep, PrinterService printerService, PcService pcService, LaptopService laptopService) {
+    public ProductServiceImpl(ProductRep productRep, PrinterService printerService, PcService pcService, LaptopService laptopService, PcRep pcRep, LaptopRep laptopRep) {
         this.productRep = productRep;
         this.printerService = printerService;
         this.pcService = pcService;
         this.laptopService = laptopService;
+        this.pcRep = pcRep;
+        this.laptopRep = laptopRep;
     }
 
     @Override
@@ -65,6 +72,12 @@ public class ProductServiceImpl implements ProductService {
                 .collect(Collectors.toList());
 
         return productsPC.stream().map(x->x.getMaker()).distinct().collect(Collectors.toList());
+    }
+
+    @Override
+    public List<TaskLaptopDto17> task17() {
+        int minSpeed = pcRep.findBy17();
+        return laptopRep.findAllBy17(minSpeed);
     }
 
 

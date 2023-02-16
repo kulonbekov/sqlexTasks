@@ -6,6 +6,7 @@ import kg.mega.sqlexTasks.mappers.PrinterMapper;
 import kg.mega.sqlexTasks.models.Printer;
 import kg.mega.sqlexTasks.models.dtos.TaskDto7;
 import kg.mega.sqlexTasks.models.dtos.TaskPrinterDto10;
+import kg.mega.sqlexTasks.models.dtos.TaskPrinterDto18;
 import kg.mega.sqlexTasks.models.dtos.TaskPrinterDto4;
 import kg.mega.sqlexTasks.service.PrinterService;
 import org.springframework.stereotype.Service;
@@ -40,5 +41,10 @@ public class PrinterServiceImpl implements PrinterService {
     public List<TaskPrinterDto10> task10() {
         List<Printer> printers = printerRep.findByMaxPrice();
         return PrinterMapper.INSTANCE.printerToTaskPrinterDtos10(printers);
+    }
+
+    @Override
+    public List<TaskPrinterDto18> task18() {
+        return printerRep.findBy18();
     }
 }

@@ -36,4 +36,7 @@ public interface PcRep extends JpaRepository<Pc, Integer> {
             "join products p on pcs.model = p.model " +
             "Where pcs.ram = pc2.ram and pcs.model > pc2.model", nativeQuery = true)
     List<TaskPcDto16> findAllByTask16();
+
+    @Query("select min(speed) from Pc")
+    int findBy17 ();
 }

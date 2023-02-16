@@ -2,6 +2,7 @@ package kg.mega.sqlexTasks.dao;
 
 import kg.mega.sqlexTasks.models.Pc;
 import kg.mega.sqlexTasks.models.Printer;
+import kg.mega.sqlexTasks.models.dtos.TaskPrinterDto18;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -21,4 +22,10 @@ public interface PrinterRep extends JpaRepository<Printer, Integer> {
             "Where price = (Select Max(price)\n" +
             "               From printers)", nativeQuery = true)
     List<Printer> findByMaxPrice();
+
+    @Query(value = "select distinct p.maker, pr.price " +
+            "from printers pr inner join products p on pr.model = p.model" +
+            " where pr.price = (select min(price) from printers pr where pr.color = 'y') " +
+            "and pr.color = 'y'" , nativeQuery = true)
+    List<TaskPrinterDto18> findBy18 ();
 }

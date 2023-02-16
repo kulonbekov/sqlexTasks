@@ -1,6 +1,7 @@
 package kg.mega.sqlexTasks.dao;
 
 import kg.mega.sqlexTasks.models.Laptop;
+import kg.mega.sqlexTasks.models.dtos.TaskLaptopDto17;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -19,4 +20,9 @@ public interface LaptopRep extends JpaRepository<Laptop, Integer> {
 
     @Query("select avg(l.speed) from Laptop l where l.price > :price")
     int findAllByPrice(double price);
+
+    @Query(value = "select p.type, p.model, l.speed " +
+            "from products p join laptops l on p.model = l.model " +
+            "where l.speed < :speed", nativeQuery = true)
+    List<TaskLaptopDto17> findAllBy17(int speed);
 }
