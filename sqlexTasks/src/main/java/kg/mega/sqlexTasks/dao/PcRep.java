@@ -22,4 +22,7 @@ public interface PcRep extends JpaRepository<Pc, Integer> {
     List<Pc> findDistinctBySpeedGreaterThan (int speed);
     @Query(value = "select avg(p.speed) from pcs p", nativeQuery = true)
     Integer findByAvgSpeed();
+
+    @Query(value = "select avg(p.speed) from pcs p join products pr on p.model = pr.model Where pr.maker = :maker", nativeQuery = true)
+    int findAllBySpeedAvgAndMaker(String maker);
 }

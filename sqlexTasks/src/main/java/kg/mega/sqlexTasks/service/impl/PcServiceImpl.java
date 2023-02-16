@@ -49,4 +49,10 @@ public class PcServiceImpl implements PcService {
         return avg;
     }
 
+    @Override
+    public Integer task13(String maker) {
+        Integer avg = pcRep.findAllBySpeedAvgAndMaker(maker);
+        return avg;
+    }
+
 }

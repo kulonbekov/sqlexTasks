@@ -12,6 +12,7 @@ public interface PcService {
     List<TaskDto7> task7(String maker);
     List<TaskPcDto9> task9(int speed);
     Integer task11();
+    Integer task13(String maker);
 
 
 }

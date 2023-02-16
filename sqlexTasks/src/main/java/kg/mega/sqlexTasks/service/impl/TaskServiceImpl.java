@@ -42,6 +42,10 @@ public class TaskServiceImpl implements TaskService {
                 return printerService.task10();
             case 11:
                 return pcService.task11();
+            case 12:
+                return laptopService.task12(1000);
+            case 13:
+                return pcService.task13("A");
         }
         return null;
     }

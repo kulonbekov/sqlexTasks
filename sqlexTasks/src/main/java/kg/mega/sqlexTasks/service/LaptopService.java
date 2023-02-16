@@ -12,5 +12,7 @@ public interface LaptopService {
     List<TaskLaptopDto6> task6(double hd);
     List<TaskDto7> task7 (String maker);
 
+    Integer task12(double price);
+
 
 }

@@ -38,5 +38,11 @@ public class LaptopServiceImpl implements LaptopService {
         return LaptopMapper.INSTANCE.laptopToTaskDtos7(laptops);
     }
 
+    @Override
+    public Integer task12(double price) {
+        Integer avg = laptopRep.findAllByPrice(price);
+        return avg;
+    }
+
 
 }

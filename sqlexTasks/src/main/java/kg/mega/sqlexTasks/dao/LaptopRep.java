@@ -16,4 +16,7 @@ public interface LaptopRep extends JpaRepository<Laptop, Integer> {
 
     @Query(value = "select distinct * from laptops l join products p on l.model = p.model where p.maker = :maker", nativeQuery = true)
     List<Laptop> findByAll(String maker);
+
+    @Query("select avg(l.speed) from Laptop l where l.price > :price")
+    int findAllByPrice(double price);
 }
