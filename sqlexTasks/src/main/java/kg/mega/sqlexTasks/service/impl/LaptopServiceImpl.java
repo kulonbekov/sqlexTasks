@@ -4,6 +4,7 @@ import kg.mega.sqlexTasks.dao.LaptopRep;
 import kg.mega.sqlexTasks.mappers.LaptopMapper;
 import kg.mega.sqlexTasks.models.Laptop;
 import kg.mega.sqlexTasks.models.dtos.TaskDto7;
+import kg.mega.sqlexTasks.models.dtos.TaskLaptopDto19;
 import kg.mega.sqlexTasks.models.dtos.TaskLaptopDto3;
 import kg.mega.sqlexTasks.models.dtos.TaskLaptopDto6;
 import kg.mega.sqlexTasks.service.LaptopService;
@@ -42,6 +43,12 @@ public class LaptopServiceImpl implements LaptopService {
     public Integer task12(double price) {
         Integer avg = laptopRep.findAllByPrice(price);
         return avg;
+    }
+
+    @Override
+    public List<TaskLaptopDto19> task19() {
+
+        return laptopRep.findByAll19();
     }
 
 

@@ -1,6 +1,7 @@
 package kg.mega.sqlexTasks.service;
 
 import kg.mega.sqlexTasks.models.dtos.TaskDto7;
+import kg.mega.sqlexTasks.models.dtos.TaskLaptopDto19;
 import kg.mega.sqlexTasks.models.dtos.TaskLaptopDto3;
 import kg.mega.sqlexTasks.models.dtos.TaskLaptopDto6;
 
@@ -13,6 +14,8 @@ public interface LaptopService {
     List<TaskDto7> task7 (String maker);
 
     Integer task12(double price);
+
+    List<TaskLaptopDto19> task19();
 
 
 }
