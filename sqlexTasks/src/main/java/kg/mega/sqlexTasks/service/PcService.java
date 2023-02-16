@@ -13,6 +13,8 @@ public interface PcService {
     List<TaskPcDto9> task9(int speed);
     Integer task11();
     Integer task13(String maker);
+    List<TaskPcDto15> task15();
+    List<TaskPcDto16> task16();
 
 
 }

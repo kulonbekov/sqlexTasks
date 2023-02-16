@@ -55,4 +55,14 @@ public class PcServiceImpl implements PcService {
         return avg;
     }
 
+    @Override
+    public List<TaskPcDto15> task15() {
+        return pcRep.findAllByHd();
+    }
+
+    @Override
+    public List<TaskPcDto16> task16() {
+        return pcRep.findAllByTask16();
+    }
+
 }
